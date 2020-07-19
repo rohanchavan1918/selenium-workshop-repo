@@ -1,3 +1,5 @@
+# THESE ARE SECRET CODES, DONOT SHARE.
+
 from selenium import webdriver
 
 # Get the path of the driver.
