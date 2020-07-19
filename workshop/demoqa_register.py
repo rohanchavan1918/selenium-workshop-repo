@@ -1,11 +1,16 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
+import os
+from dotenv import load_dotenv
 
 # setup browser
 def setup():
     driver_path = "drivers/chromedriver.exe"
     return webdriver.Chrome(driver_path)
+
+# def set_env():
+#     load_dotenv()
 
 
 def register(browsaer,user):
@@ -43,12 +48,16 @@ def login(browser,user):
 # ////////// MAIN
 
 browser = setup()
+
+# Load environment variables
+load_dotenv()
+
 # User Object
 user = {
-    "first_name" : "Coders",
-    "last_name" : "Arena",
-    "user_name" : "codersarena",
-    "password"  : "Pass@123"
+    "first_name" : os.getenv('FIRST_NAME'),
+    "last_name" : os.getenv('LAST_NAME'),
+    "user_name" : os.getenv('USER_NAME'),
+    "password"  : os.getenv("PASSWORD"),
 }
 
 register(browser,user)
