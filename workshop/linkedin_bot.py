@@ -40,14 +40,20 @@ def add_note(browser):
         add_note_btn = browser.find_element_by_class_name("artdeco-button__text")
     # Actions
         add_note_btn.click()
-    except:
-        return
+    except Exception as e:
+        print(e)
+        input("Exceptonm")
     try:
-        note_class_name = browser.find_element_by_id("custom-message")
-        note_class_name.send_keys("Hello, Please add us to your professional linkedin network. Thanks !!!!")
-        add_note_btn.click()
-    except:
-        return
+        # note_class_name = browser.find_element_by_id("custom-message")
+        # note_class_name.send_keys("Hello, Please add us to your professional linkedin network. Thanks !!!!")
+        # add_note_btn.click()
+        send_now_cn = browser.find_element_by_class_name("ml1.artdeco-button.artdeco-button--3.artdeco-button--primary.ember-view")
+        send_now_cn.click()
+
+    except Exception as e:
+        print(e)
+        input("Exception caused")
+    
 
 def search(browser,search_term):
 
@@ -64,6 +70,7 @@ def search(browser,search_term):
     connect_btn_cn = "search-result__action-button.search-result__actions--primary.artdeco-button.artdeco-button--default.artdeco-button--2.artdeco-button--secondary"
     connect_btns = browser.find_elements_by_class_name(connect_btn_cn)
 
+    print(connect_btns)
     for conn_btn in connect_btns:
         try:
             conn_btn.click()
@@ -83,4 +90,4 @@ user = {
     'password' : os.getenv("LINKEDIN_PASSWORD"),
 }
 login(browser,user)
-search(browser,"suraj kadam")
+search(browser,"rohan chavan")
